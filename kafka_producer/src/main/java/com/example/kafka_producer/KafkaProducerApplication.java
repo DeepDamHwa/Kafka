@@ -16,6 +16,9 @@ public class KafkaProducerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        kafkaProducer.sendNewInteractionCaptureMessage("hello, DeepDamHwa");
+//        kafkaProducer.sendNewInteractionCaptureMessage("hello, DeepDamHwa");
+        for(int i=0;i<15;i++){
+            kafkaProducer.sendNewInteractionCaptureMessage("message"+i, "key-"+i);
+        }
     }
 }
