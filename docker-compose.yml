@@ -16,7 +16,7 @@ services:
       - KAFKA_CFG_BROKER_ID=1
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181 # 브로커가 같은 주키퍼를 바라보면, 클러스터로 연결됨.
       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092 # 안에서 열어줄 서버. 어디서 와도, 내부의 9092는 열어주겠다! (방화벽 인바운드 규칙같은것)
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 # 클라이언트가 접근하는 주소
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://172.30.1.29:9092 # 클라이언트가 접근하는 주소
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ENABLE_KRAFT=no
     depends_on:
@@ -26,12 +26,12 @@ services:
     image: bitnami/kafka:3.6.1
     container_name: kafka02
     ports:
-      - "9093:9092"
+      - "9093:9093"
     environment:
       - KAFKA_CFG_BROKER_ID=2
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://172.30.1.29:9093
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ENABLE_KRAFT=no
     depends_on:
@@ -41,12 +41,12 @@ services:
     image: bitnami/kafka:3.6.1
     container_name: kafka03
     ports:
-      - "9094:9092"
+      - "9094:9094"
     environment:
       - KAFKA_CFG_BROKER_ID=3
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9094
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://172.30.1.29:9094
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ENABLE_KRAFT=no
     depends_on:
